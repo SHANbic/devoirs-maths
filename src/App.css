@@ -1,0 +1,776 @@
+.app {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 28px 18px;
+  background:
+    radial-gradient(900px 500px at 20% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 80% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  color: var(--text-h);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.brandText {
+  min-width: 0;
+}
+
+.pageTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pageTitle {
+  color: var(--text-h);
+  font-weight: 750;
+  letter-spacing: -0.2px;
+}
+
+.title {
+  color: var(--text-h);
+  font-weight: 650;
+  letter-spacing: -0.2px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.tab {
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--code-bg) 70%, transparent);
+  color: var(--text-h);
+  font-size: 14px;
+  font-weight: 650;
+  white-space: nowrap;
+  transition: box-shadow 0.2s ease, transform 0.06s ease, border-color 0.2s ease;
+}
+
+.tab:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+
+.tab.active {
+  background: color-mix(in srgb, var(--accent-bg) 70%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 65%, var(--border));
+}
+
+.stat {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--code-bg) 70%, transparent);
+  border: 1px solid var(--border);
+  min-width: 92px;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--text);
+}
+
+.statValue {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.card {
+  max-width: 980px;
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+  display: grid;
+  gap: 18px;
+}
+
+.prompt {
+  color: var(--text-h);
+  font-size: 16px;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.vs {
+  align-self: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--code-bg) 70%, transparent);
+  color: var(--text);
+}
+
+.choice {
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--code-bg) 55%, transparent);
+  padding: 18px 16px;
+  cursor: pointer;
+  transition:
+    transform 0.06s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  display: grid;
+  place-items: center;
+  min-height: 104px;
+}
+
+.choice:disabled {
+  cursor: default;
+}
+
+.choice:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.choice:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: var(--shadow);
+}
+
+.choice:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 2px;
+}
+
+.choiceValue {
+  font-family: var(--mono);
+  font-size: 40px;
+  letter-spacing: -0.6px;
+  font-weight: 750;
+  color: var(--text-h);
+  font-variant-numeric: tabular-nums;
+}
+
+.choice.selected {
+  border-color: color-mix(in srgb, var(--accent) 65%, var(--border));
+  background: color-mix(in srgb, var(--accent-bg) 70%, transparent);
+}
+
+.choice.correct {
+  border-color: color-mix(in srgb, #22c55e 55%, var(--border));
+  background: color-mix(in srgb, #22c55e 16%, transparent);
+}
+
+.choice.wrong {
+  border-color: color-mix(in srgb, #ef4444 55%, var(--border));
+  background: color-mix(in srgb, #ef4444 14%, transparent);
+}
+
+.feedback {
+  min-height: 24px;
+  font-size: 14px;
+}
+
+.hint {
+  color: var(--text);
+}
+
+.ok {
+  color: color-mix(in srgb, #16a34a 80%, var(--text-h));
+  font-weight: 650;
+}
+
+.ko {
+  color: color-mix(in srgb, #ef4444 75%, var(--text-h));
+  font-weight: 650;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.primary,
+.ghost {
+  border-radius: 12px;
+  padding: 10px 14px;
+  min-height: 44px;
+  font-weight: 650;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.primary {
+  background: color-mix(in srgb, var(--accent) 18%, var(--bg));
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  color: var(--text-h);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-h);
+}
+
+.primary:hover,
+.ghost:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+.primary:focus-visible,
+.ghost:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 2px;
+}
+
+.settings {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.rangeRow {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.rangeLabel {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.rangeValue {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-h);
+}
+
+.range {
+  width: 100%;
+}
+
+.footer {
+  max-width: 980px;
+  width: 100%;
+  margin: 16px auto 0;
+  color: var(--text);
+  font-size: 12px;
+}
+
+.paraHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.paraStatement {
+  color: var(--text-h);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.paraScore {
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.paraExplanation {
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.paraSvg {
+  width: 100%;
+  height: min(280px, 34vh);
+  max-height: 34vh;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--code-bg) 55%, transparent);
+}
+
+.paraShape {
+  fill: color-mix(in srgb, var(--accent) 8%, transparent);
+  stroke: color-mix(in srgb, var(--text-h) 35%, var(--border));
+  stroke-width: 2;
+}
+
+.paraVertex {
+  fill: var(--text-h);
+}
+
+.paraLabel {
+  font-family: var(--mono);
+  font-size: 14px;
+  fill: var(--text-h);
+}
+
+.paraDiag {
+  stroke: color-mix(in srgb, var(--accent) 70%, var(--text-h));
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+}
+
+.paraAxis {
+  stroke: color-mix(in srgb, var(--text-h) 25%, var(--border));
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+}
+
+.paraPoint {
+  fill: color-mix(in srgb, var(--accent) 70%, var(--text-h));
+}
+
+.paraSide {
+  stroke: color-mix(in srgb, #22c55e 65%, var(--text-h));
+  stroke-width: 5;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+
+.paraSide2 {
+  stroke: color-mix(in srgb, #3b82f6 70%, var(--text-h));
+  stroke-width: 5;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+
+.paraAngle {
+  fill: color-mix(in srgb, #f59e0b 25%, transparent);
+  stroke: color-mix(in srgb, #f59e0b 75%, var(--border));
+  stroke-width: 1.5;
+}
+
+.paraRightAngle {
+  fill: color-mix(in srgb, #22c55e 18%, transparent);
+  stroke: color-mix(in srgb, #22c55e 70%, var(--border));
+  stroke-width: 2;
+}
+
+.figureTabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.figureTab {
+  border-radius: 999px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--code-bg) 70%, transparent);
+  color: var(--text-h);
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.06s ease, border-color 0.2s ease;
+}
+
+.figureTab:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+
+.figureTab.active {
+  background: color-mix(in srgb, var(--accent-bg) 70%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 65%, var(--border));
+}
+
+.fracEq {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 18px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--code-bg) 55%, transparent);
+}
+
+.fracStep {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px dashed transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.fracStep.ok {
+  border-color: color-mix(in srgb, #22c55e 55%, var(--border));
+  background: color-mix(in srgb, #22c55e 10%, transparent);
+}
+
+.fracStep.ko {
+  border-color: color-mix(in srgb, #ef4444 55%, var(--border));
+  background: color-mix(in srgb, #ef4444 10%, transparent);
+}
+
+.fracStepLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.feedbackList {
+  display: grid;
+  gap: 4px;
+}
+
+.fracOp {
+  font-family: var(--mono);
+  font-size: 36px;
+  font-weight: 750;
+  color: var(--text-h);
+  line-height: 1;
+}
+
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-h);
+  min-width: 56px;
+}
+
+.fracNum,
+.fracDen {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  padding: 2px 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fracBar {
+  display: block;
+  width: 100%;
+  min-width: 36px;
+  height: 2.5px;
+  background: var(--text-h);
+  border-radius: 2px;
+  margin: 2px 0;
+}
+
+.fracInput {
+  width: 3.2ch;
+  min-width: 56px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-h);
+  background: transparent;
+  border: 1px dashed color-mix(in srgb, var(--accent) 50%, var(--border));
+  border-radius: 8px;
+  padding: 2px 4px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.fracInput::placeholder {
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+}
+
+.fracInput:focus-visible {
+  border-color: color-mix(in srgb, var(--accent) 80%, var(--border));
+  background: color-mix(in srgb, var(--accent-bg) 50%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.fracInput:disabled {
+  opacity: 0.85;
+}
+
+.calcOperand {
+  font-family: var(--mono);
+  font-size: 36px;
+  font-weight: 750;
+  color: var(--text-h);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.calcAnswer {
+  font-size: 36px;
+  min-width: 80px;
+  width: 4ch;
+}
+
+.calcInputGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signToggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--code-bg) 70%, transparent);
+  color: var(--text-h);
+  font-family: var(--mono);
+  font-size: 24px;
+  font-weight: 750;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.06s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.signToggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+
+.signToggle:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 2px;
+}
+
+.signToggle.active {
+  background: color-mix(in srgb, var(--accent-bg) 70%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 65%, var(--border));
+}
+
+.signToggle:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+@media (max-width: 640px) {
+  .calcOperand {
+    font-size: 30px;
+  }
+  .calcAnswer {
+    font-size: 30px;
+  }
+}
+
+.steps {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: color-mix(in srgb, var(--code-bg) 50%, transparent);
+}
+
+.stepsTitle {
+  font-weight: 700;
+  color: var(--text-h);
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.stepsList {
+  margin: 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 10px;
+  color: var(--text-h);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.stepsList li .frac {
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+.stepsList li .frac .fracNum,
+.stepsList li .frac .fracDen {
+  font-size: 18px;
+}
+
+@media (max-width: 640px) {
+  .fracOp {
+    font-size: 30px;
+  }
+  .fracNum,
+  .fracDen {
+    font-size: 26px;
+  }
+  .fracInput {
+    font-size: 24px;
+    min-width: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 16px 12px calc(16px + env(safe-area-inset-bottom));
+  }
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .stats {
+    justify-content: space-between;
+  }
+  .stat {
+    flex: 1;
+    min-width: 0;
+  }
+  .tabs {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tab {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+  .card {
+    padding: 16px;
+    gap: 14px;
+    border-radius: 16px;
+  }
+  .choices {
+    grid-template-columns: 1fr;
+  }
+  .vs {
+    display: none;
+  }
+  .choiceValue {
+    font-size: 44px;
+  }
+  .choice {
+    min-height: 88px;
+  }
+  .rangeRow {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .actions {
+    gap: 8px;
+  }
+  .actions button {
+    flex: 1 1 auto;
+  }
+  .paraSvg {
+    height: min(240px, 28vh);
+    max-height: 28vh;
+  }
+  .paraHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pageTop {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .fracEq {
+    gap: 10px;
+    padding: 16px 10px;
+  }
+  .figureTabs {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    padding: 14px 12px;
+  }
+  .pageTitle {
+    font-size: 18px;
+  }
+  .prompt {
+    font-size: 15px;
+  }
+  .choiceValue {
+    font-size: 38px;
+  }
+  .calcOperand,
+  .calcAnswer {
+    font-size: 26px;
+  }
+  .calcAnswer {
+    min-width: 64px;
+  }
+  .fracOp {
+    font-size: 26px;
+  }
+}
